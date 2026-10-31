@@ -15,7 +15,7 @@ const servicios = (await getCollection('servicios')).sort((a, b) => a.data.orden
       <p class="portada__sub">{inicio.subtitulo}</p>
       <div class="portada__botones">
         <a class="boton" href="/contacto/">{inicio.botonPrincipal}</a>
-        <a class="boton boton--secundario" href="/servicios/">Ver servicios</a>
+        <a class="boton boton--secundario" href="/vision/">Cómo funciona</a>
       </div>
     </div>
   </section>
@@ -49,6 +49,19 @@ const servicios = (await getCollection('servicios')).sort((a, b) => a.data.orden
       </div>
     </div>
   </section>
+
+  <section class="seccion seccion--suave">
+    <div class="contenedor llamada">
+      <div>
+        <h2>¿Eres fabricante o constructora?</h2>
+        <p>Cuéntanos qué sistema montas y cuántos equipos necesitas.</p>
+      </div>
+      <div class="portada__botones">
+        <a class="boton" href="/contacto/">Solicita una llamada</a>
+        <a class="boton boton--secundario" href="/servicios/academia-evolut/">Ver la formación</a>
+      </div>
+    </div>
+  </section>
 </Base>
 
 <style>
@@ -56,4 +69,6 @@ const servicios = (await getCollection('servicios')).sort((a, b) => a.data.orden
   .portada h1 { max-width: 22ch; }
   .portada__sub { font-size: 1.25rem; color: var(--color-texto-suave); max-width: 40rem; }
   .portada__botones { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+  .llamada { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .llamada .portada__botones { margin-top: 0; }
 </style>

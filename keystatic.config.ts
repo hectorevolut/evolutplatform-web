@@ -56,17 +56,5 @@ export default config({
         contenido: fields.markdoc({ label: 'Contenido', extension: 'md' }),
       },
     }),
-    noticias: collection({
-      label: 'Noticias',
-      slugField: 'titulo',
-      path: 'src/content/noticias/*',
-      format: { contentField: 'contenido' },
-      schema: {
-        titulo: fields.slug({ name: { label: 'Título' } }),
-        fecha: fields.date({ label: 'Fecha', defaultValue: { kind: 'today' } }),
-        resumen: fields.text({ label: 'Resumen', multiline: true }),
-        contenido: fields.markdoc({ label: 'Contenido', extension: 'md' }),
-      },
-    }),
   },
 });

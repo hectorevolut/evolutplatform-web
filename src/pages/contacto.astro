@@ -14,12 +14,12 @@ const error = Astro.url.searchParams.has('error');
     <div class="contenedor">
       <h1>Contacto</h1>
       <p class="seccion__intro">
-        Cuéntanos qué necesitas y te respondemos en un plazo de 48 horas laborables. También puedes escribir a
+        Cuéntanos qué necesitas y te responderemos lo antes posible. También puedes escribir a{' '}
         <a href={`mailto:${empresa.email}`}>{empresa.email}</a>.
       </p>
       {enviado && <p class="aviso aviso--ok" role="status">Mensaje enviado. Gracias, te responderemos pronto.</p>}
       {error && <p class="aviso aviso--error" role="alert">No se pudo enviar. Revisa los campos o escríbenos por correo.</p>}
-      {!enviado && <FormularioContacto />}
+      {!enviado && <FormularioContacto tipos={['Fabricante', 'Constructora', 'Cuadrilla de montaje', 'Otro']} />}
     </div>
   </section>
 </Base>

@@ -1,10 +1,10 @@
 {
-  "nombre": "evolutplatform-web",
-  "razonSocial": "Razón social pendiente",
-  "nif": "NIF pendiente",
-  "direccion": "Domicilio pendiente",
-  "email": "contacto@evolutplatform.es",
+  "nombre": "Evolut Platform",
+  "razonSocial": "Evolut Platform LLC",
+  "nif": "",
+  "direccion": "Wyoming, Estados Unidos",
+  "email": "admin@evolutplatform.com",
   "telefono": "",
-  "registro": "",
+  "registro": "Sociedad registrada en Wyoming (EE. UU.)",
   "livroReclamacoes": false
 }

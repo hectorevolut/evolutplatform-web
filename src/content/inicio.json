@@ -1,11 +1,12 @@
 {
-  "etiqueta": "",
-  "titular": "Titular principal de la web",
-  "subtitulo": "Una o dos frases que expliquen qué hace la empresa y para quién.",
-  "botonPrincipal": "Pide información",
+  "etiqueta": "Beta · MVP",
+  "titular": "Cuadrillas formadas para la construcción industrializada",
+  "subtitulo": "Formamos y certificamos equipos de montaje, medimos su rendimiento en obra y los conectamos con fabricantes y constructoras que los necesitan.",
+  "botonPrincipal": "Solicita información",
   "puntos": [
-    { "titulo": "Primer punto fuerte", "texto": "Por qué elegir esta empresa." },
-    { "titulo": "Segundo punto fuerte", "texto": "Qué la diferencia de la competencia." },
-    { "titulo": "Tercer punto fuerte", "texto": "Qué resultado obtiene el cliente." }
+    { "titulo": "Falta de mano de obra cualificada", "texto": "La construcción industrializada crece más rápido que el número de montadores preparados. Formamos equipos para cubrir ese hueco." },
+    { "titulo": "Montaje estandarizado", "texto": "Procedimientos y listas de control comunes para que la calidad no dependa de cada cuadrilla." },
+    { "titulo": "Rendimiento medido en cada obra", "texto": "Datos de productividad, calidad y seguridad por proyecto, no estimaciones." },
+    { "titulo": "Formación práctica", "texto": "Cada sistema industrializado se aprende con material didáctico y práctica real de montaje." }
   ]
 }

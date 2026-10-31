@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  titulo="Visión"
+  descripcion="Por qué la construcción industrializada necesita cuadrillas formadas, estándares de montaje y datos de rendimiento."
+>
+  <section class="seccion">
+    <div class="contenedor">
+      <span class="etiqueta">Visión</span>
+      <h1>Montaje profesional para una construcción que se industrializa</h1>
+      <div class="rejilla vision">
+        <article>
+          <h2>El problema</h2>
+          <p>
+            La construcción industrializada crece más deprisa que el número de cuadrillas preparadas y que los
+            estándares de montaje. El resultado son retrasos y sobrecostes.
+          </p>
+        </article>
+        <article>
+          <h2>La solución</h2>
+          <p>
+            Una plataforma que forma, certifica y mide a los equipos de montaje, y los conecta con fabricantes y
+            obras.
+          </p>
+        </article>
+        <article>
+          <h2>El impacto</h2>
+          <p>
+            Más productividad, menos errores y datos reales para fijar precios, plazos y el tamaño de cada equipo.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--suave">
+    <div class="contenedor">
+      <h2>Cómo funciona</h2>
+      <ol class="pasos">
+        <li><strong>Formación enfocada.</strong> Cada cuadrilla se forma en el sistema concreto que va a montar.</li>
+        <li>
+          <strong>Seguimiento por proyecto.</strong> Plantillas digitales y métricas comunes en todas las obras.
+        </li>
+        <li><strong>Conexión con la demanda.</strong> Los equipos certificados acceden a fabricantes y constructoras.</li>
+      </ol>
+      <p class="donde">Operamos en España, Reino Unido y Estados Unidos.</p>
+      <a class="boton" href="/contacto/">Habla con nosotros</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .vision h2 { font-size: 1.375rem; }
+  .vision p { color: var(--color-texto-suave); }
+  .pasos { display: grid; gap: 1rem; padding-left: 1.25rem; max-width: 46rem; margin-bottom: 2rem; }
+  .donde { color: var(--color-texto-suave); }
+</style>

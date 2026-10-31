@@ -11,13 +11,5 @@ const servicios = defineCollection({
   }),
 });
 
-const noticias = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/noticias' }),
-  schema: z.object({
-    titulo: z.string(),
-    fecha: z.coerce.date(),
-    resumen: z.string(),
-  }),
-});
 
-export const collections = { servicios, noticias };
+export const collections = { servicios };
