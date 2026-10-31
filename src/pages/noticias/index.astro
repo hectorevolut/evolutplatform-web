@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+const noticias = (await getCollection('noticias')).sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf());
+const fecha = (d: Date) => d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base titulo="Noticias" descripcion="Novedades de la empresa.">
+  <section class="seccion">
+    <div class="contenedor prosa">
+      <h1>Noticias</h1>
+      {noticias.length === 0 && <p>Todavía no hay noticias.</p>}
+      {
+        noticias.map((n) => (
+          <article class="noticia">
+            <time datetime={n.data.fecha.toISOString()}>{fecha(n.data.fecha)}</time>
+            <h2><a href={`/noticias/${n.id}/`}>{n.data.titulo}</a></h2>
+            <p>{n.data.resumen}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Base>
+
+<style>
+  .noticia { padding-block: 1.25rem; border-bottom: 1px solid #e2e8f0; }
+  .noticia h2 { font-size: 1.375rem; margin: 0.25rem 0; }
+  .noticia h2 a { text-decoration: none; color: var(--color-texto); }
+  time { color: var(--color-texto-suave); font-size: 0.875rem; }
+</style>

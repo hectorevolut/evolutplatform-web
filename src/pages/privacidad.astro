@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import empresa from '../content/empresa.json';
+// Plantilla orientativa (RGPD): el cliente o su asesor deben revisar este texto.
+---
+
+<Base titulo="Política de privacidad" descripcion={`Cómo trata ${empresa.nombre} tus datos personales.`}>
+  <section class="seccion">
+    <div class="contenedor prosa">
+      <h1>Política de privacidad</h1>
+      <h2>Responsable</h2>
+      <p>{empresa.razonSocial} ({empresa.nif}), {empresa.direccion}. Contacto: <a href={`mailto:${empresa.email}`}>{empresa.email}</a>.</p>
+      <h2>Qué datos tratamos y para qué</h2>
+      <p>
+        Los datos que envías con el formulario de contacto (nombre, correo y mensaje), solo para responder a tu
+        consulta. La base legal es tu consentimiento, que das al enviar el formulario.
+      </p>
+      <h2>Cuánto tiempo</h2>
+      <p>Mientras dure la relación y, después, durante los plazos que exija la ley.</p>
+      <h2>Con quién se comparten</h2>
+      <p>
+        Con nadie, salvo obligación legal. El proveedor de alojamiento y correo trata los datos por cuenta nuestra,
+        con contrato de encargo de tratamiento.
+      </p>
+      <h2>Tus derechos</h2>
+      <p>
+        Puedes pedir acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a
+        {empresa.email}. También puedes reclamar ante la autoridad de protección de datos (AEPD en España, CNPD en
+        Portugal).
+      </p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,52 @@
+@import './marca.css';
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--color-texto);
+  background: var(--color-fondo);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--color-marca); }
+h1, h2, h3 { font-family: var(--fuente-titulos); line-height: 1.2; margin: 0 0 0.5em; }
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.25rem; }
+p { margin: 0 0 1em; }
+
+.contenedor { width: min(1120px, 100% - 2rem); margin-inline: auto; }
+.seccion { padding-block: clamp(3rem, 8vw, 6rem); }
+.seccion--suave { background: var(--color-fondo-suave); }
+.seccion__intro { max-width: 46rem; margin-bottom: 2.5rem; color: var(--color-texto-suave); }
+.etiqueta {
+  display: inline-block; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--color-marca); margin-bottom: 0.75rem;
+}
+
+.boton {
+  display: inline-block; padding: 0.8rem 1.4rem; border-radius: var(--radio);
+  font-weight: 600; text-decoration: none; border: 2px solid var(--color-marca);
+  background: var(--color-marca); color: #fff; cursor: pointer; font-size: 1rem;
+}
+.boton:hover { filter: brightness(1.08); }
+.boton--secundario { background: transparent; color: var(--color-marca); }
+
+.rejilla { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.tarjeta {
+  background: var(--color-fondo); border: 1px solid #e2e8f0; border-radius: var(--radio);
+  padding: 1.5rem; display: flex; flex-direction: column;
+}
+.tarjeta p { color: var(--color-texto-suave); }
+.tarjeta a.mas { margin-top: auto; font-weight: 600; text-decoration: none; }
+
+.prosa { max-width: 46rem; }
+.prosa h2 { margin-top: 2rem; font-size: 1.5rem; }
+
+:focus-visible { outline: 3px solid var(--color-acento); outline-offset: 2px; }
+.solo-lectores {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}

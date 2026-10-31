@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import empresa from '../content/empresa.json';
+// Plantilla orientativa: el cliente o su asesor deben revisar este texto.
+---
+
+<Base titulo="Aviso legal" descripcion={`Aviso legal de ${empresa.nombre}.`}>
+  <section class="seccion">
+    <div class="contenedor prosa">
+      <h1>Aviso legal</h1>
+      <h2>Titular de la web</h2>
+      <ul>
+        <li>Razón social: {empresa.razonSocial}</li>
+        <li>NIF: {empresa.nif}</li>
+        <li>Domicilio: {empresa.direccion}</li>
+        <li>Correo electrónico: <a href={`mailto:${empresa.email}`}>{empresa.email}</a></li>
+        {empresa.telefono && <li>Teléfono: {empresa.telefono}</li>}
+        {empresa.registro && <li>Datos registrales: {empresa.registro}</li>}
+      </ul>
+      <h2>Uso de la web</h2>
+      <p>
+        El acceso a esta web es gratuito y supone aceptar estas condiciones. Quien la use se compromete a hacerlo de
+        forma lícita y a no dañar su funcionamiento.
+      </p>
+      <h2>Propiedad intelectual</h2>
+      <p>
+        Los textos, imágenes, logotipos y diseño de esta web pertenecen a {empresa.razonSocial} o se usan con
+        autorización. No se pueden reproducir sin permiso por escrito.
+      </p>
+      <h2>Responsabilidad</h2>
+      <p>
+        {empresa.razonSocial} no se hace responsable del contenido de las webs externas a las que se enlace desde
+        esta.
+      </p>
+    </div>
+  </section>
+</Base>

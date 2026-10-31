@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import inicio from '../content/inicio.json';
+import empresa from '../content/empresa.json';
+
+const servicios = (await getCollection('servicios')).sort((a, b) => a.data.orden - b.data.orden);
+---
+
+<Base titulo={`${empresa.nombre} — ${inicio.titular}`} descripcion={inicio.subtitulo}>
+  <section class="portada">
+    <div class="contenedor">
+      {inicio.etiqueta && <span class="etiqueta">{inicio.etiqueta}</span>}
+      <h1>{inicio.titular}</h1>
+      <p class="portada__sub">{inicio.subtitulo}</p>
+      <div class="portada__botones">
+        <a class="boton" href="/contacto/">{inicio.botonPrincipal}</a>
+        <a class="boton boton--secundario" href="/servicios/">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--suave">
+    <div class="contenedor rejilla">
+      {
+        inicio.puntos.map((p) => (
+          <div>
+            <h3>{p.titulo}</h3>
+            <p>{p.texto}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <h2>Servicios</h2>
+      <div class="rejilla">
+        {
+          servicios.map((s) => (
+            <article class="tarjeta">
+              <h3>{s.data.titulo}</h3>
+              <p>{s.data.resumen}</p>
+              <a class="mas" href={`/servicios/${s.id}/`}>Más información →</a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .portada { padding-block: clamp(4rem, 12vw, 8rem); }
+  .portada h1 { max-width: 22ch; }
+  .portada__sub { font-size: 1.25rem; color: var(--color-texto-suave); max-width: 40rem; }
+  .portada__botones { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+</style>

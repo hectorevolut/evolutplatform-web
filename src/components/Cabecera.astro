@@ -1,0 +1,41 @@
+---
+import { menu } from '../navegacion';
+import empresa from '../content/empresa.json';
+const actual = Astro.url.pathname;
+---
+
+<header class="cabecera">
+  <div class="contenedor cabecera__fila">
+    <a class="cabecera__logo" href="/">{empresa.nombre}</a>
+    <nav aria-label="Principal">
+      <ul>
+        {
+          menu.map((item) => (
+            <li>
+              <a
+                href={item.url}
+                aria-current={
+                  (item.url === '/' ? actual === '/' : actual.startsWith(item.url)) ? 'page' : undefined
+                }
+              >
+                {item.texto}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .cabecera {
+    position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-fondo) 92%, transparent);
+    backdrop-filter: blur(8px); border-bottom: 1px solid #e2e8f0;
+  }
+  .cabecera__fila { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; flex-wrap: wrap; }
+  .cabecera__logo { font-weight: 800; font-size: 1.125rem; color: var(--color-marca-oscuro); text-decoration: none; }
+  ul { display: flex; gap: 1.25rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+  nav a { color: var(--color-texto); text-decoration: none; font-weight: 500; }
+  nav a[aria-current='page'] { color: var(--color-marca); }
+</style>
