@@ -240,3 +240,20 @@ a { color: inherit; }
 }
 .site-foot p { margin: 0; }
 @media (min-width: 48rem) { .site-foot { background-size: calc(100% - 4rem) 1px; } }
+
+/* Aviso legal */
+.legal { padding-top: 2.5rem; padding-bottom: 4rem; }
+.legal h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.05;
+  font-weight: 800;
+  font-stretch: 110%;
+  letter-spacing: -0.02em;
+}
+.legal .updated { margin: 0 0 2.5rem; font-size: 0.875rem; color: var(--ink-soft); }
+.legal h2 { margin: 2.25rem 0 0.75rem; font-size: 1.25rem; font-weight: 700; }
+.legal p { margin: 0 0 0.9rem; max-width: var(--measure); color: var(--ink-soft); }
+.legal p strong { color: var(--ink); }
+.legal a, .site-foot a { text-decoration-color: var(--accent); text-underline-offset: 0.15em; }
+.site-foot p + p { margin-top: 0.35rem; }
