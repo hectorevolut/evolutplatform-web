@@ -1,48 +1,47 @@
-# evolutplatform-web
+# evolutplatform.com
 
-Web hecha con la plantilla `web-cliente` (Astro + Keystatic). Sigue el *Procedimiento de desarrollo web*.
+Web de presentación de **Evolut**, producto de **Evolut Platform LLC** (Wyoming), software de gestión para pequeñas instaladoras de LSF y construcción. Sitio estático publicado con GitHub Pages.
 
-## Día a día
+## Estructura
 
-```sh
-npm install          # la primera vez
-npm run dev          # http://localhost:4321  ·  panel de edición en /keystatic
-npm run comprobar    # revisa el código y compila; tiene que salir sin errores
-npm run formato      # ordena el código
+```
+index.html        Inglés (raíz). Redirige a /es/ o /pt/ si el navegador está en esos idiomas
+es/index.html     Español
+pt/index.html     Portugués
+404.html          Página de error
+assets/style.css  Estilos (modo claro y oscuro automático)
+assets/fonts/     Archivo (fuente variable, licencia OFL), servida desde el propio sitio
+assets/favicon.svg
+CNAME             Dominio personalizado para GitHub Pages
+.nojekyll         Publicar los ficheros tal cual, sin Jekyll
+robots.txt, sitemap.xml
 ```
 
-Ramas: trabaja en `pruebas` (el cliente revisa) y pasa a `main` (la web publicada) cuando lo apruebe:
+Sin cookies, sin analítica y sin recursos de terceros: no hace falta banner de cookies.
 
-```sh
-git switch main && git merge pruebas && git push && git switch pruebas
-```
+## Publicación (una sola vez)
 
-## Dónde se cambia cada cosa
+1. **Verificar el dominio en GitHub** (evita que otra cuenta lo reclame):
+   GitHub → foto de perfil → Settings → Pages → *Add a domain* → `evolutplatform.com`.
+   GitHub da un registro TXT `_github-pages-challenge-hectorevolut` que se añade en Bizee.
+2. **Crear el repositorio** `hectorevolut/evolutplatform-web` (público: Pages gratis lo exige) y subir estos ficheros a la rama `main`.
+3. En el repositorio: Settings → Pages → *Deploy from a branch* → `main` / `(root)`.
+   Custom domain: `evolutplatform.com`. Cuando el certificado esté listo, marcar *Enforce HTTPS*.
+4. **DNS en Bizee** (no tocar MX, SPF, DKIM ni DMARC):
 
-| Qué | Dónde |
-|---|---|
-| Colores y tipografías | `src/styles/marca.css` |
-| Menú | `src/navegacion.ts` |
-| Datos de la empresa (pie, aviso legal) | `/keystatic` → Datos de la empresa, o `src/content/empresa.json` |
-| Portada | `/keystatic` → Página de inicio, o `src/content/inicio.json` |
-| Servicios y noticias | `/keystatic`, o `src/content/servicios` y `src/content/noticias` |
-| Opciones del desplegable del formulario | `src/pages/contacto.astro` → `<FormularioContacto tipos={[...]} />` |
-| Textos legales | `src/pages/aviso-legal.astro`, `privacidad.astro`, `cookies.astro` |
+| Tipo  | Host | Valor |
+|-------|------|-------|
+| A     | @    | 185.199.108.153 |
+| A     | @    | 185.199.109.153 |
+| A     | @    | 185.199.110.153 |
+| A     | @    | 185.199.111.153 |
+| AAAA  | @    | 2606:50c0:8000::153 (y ::8001, ::8002, ::8003), si Bizee lo permite |
+| CNAME | www  | hectorevolut.github.io |
 
-## Publicar en Hostinger (plan Business o Cloud)
+## Cambiar textos
 
-1. *Websites → Create site → Web App → Import Git Repository* → este repositorio, rama `main`.
-2. Build: `npm run build` · Start: `npm start` · Node.js 22 o superior.
-3. Variables de entorno: las de `.env.example` (`HOST`, `SITE_URL`, `SMTP_*`, `CONTACTO_DESTINO`).
-4. Segunda web app con la rama `pruebas` en `pruebas.<dominio>`.
+Los textos de los tres idiomas están directamente en cada `index.html`. Si se cambia algo en uno, cambiarlo también en los otros dos.
 
-## Panel de edición para el cliente
+## Pendiente
 
-En local, `/keystatic` guarda en los ficheros. En la web publicada solo existe si se conecta a GitHub:
-
-1. Pon `PUBLIC_KEYSTATIC_REPO=usuario/repositorio` en `.env` y arranca `npm run dev`.
-2. Entra en `http://127.0.0.1:4321/keystatic` y sigue el asistente: crea una GitHub App y genera las variables
-   `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET` y
-   `PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`.
-3. Copia esas variables, y `PUBLIC_KEYSTATIC_REPO`, a la configuración de la web app en Hostinger.
-4. Da acceso al cliente al repositorio en GitHub: cada cambio que guarde es un commit y la web se publica sola.
+- `app.evolutplatform.com`: reservado para la aplicación (Python + PostgreSQL + Docker en un VPS). Se añadirá su registro DNS cuando exista el servidor.
