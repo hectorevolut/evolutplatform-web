@@ -1,0 +1,4 @@
+# Dependencias y salidas de Astro (se regeneran)
+node_modules/
+dist/
+.astro/
