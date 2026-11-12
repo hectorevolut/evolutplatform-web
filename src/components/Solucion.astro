@@ -1,0 +1,44 @@
+---
+// Sección 3 · La solución: cuatro pasos numerados, unidos por flechas en escritorio.
+import type { Idioma } from "../i18n";
+import { textos } from "../textos";
+
+interface Props { idioma: Idioma; }
+const t = textos[Astro.props.idioma].solucion;
+---
+<section class="seccion">
+  <div class="contenedor">
+    <p class="etiqueta">{t.etiqueta}</p>
+    <h2>{t.titulo}</h2>
+    <ol class="pasos">
+      {t.pasos.map(([titulo, texto], i) => (
+        <li class="paso">
+          <span class="numero" aria-hidden="true">{i + 1}</span>
+          <h3>{titulo}</h3>
+          <p>{texto}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .pasos { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 32px; }
+  .paso { position: relative; border: 2px solid var(--acero); border-radius: 8px; padding: 24px; }
+  .paso p { color: var(--gris); margin: 0; }
+  .numero {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%; margin-bottom: 16px;
+    background: var(--acero); color: var(--blanco); font-weight: 700;
+  }
+  /* Móvil: flecha hacia abajo entre pasos */
+  .paso:not(:last-child)::after {
+    content: "↓"; position: absolute; left: 50%; bottom: -30px; transform: translateX(-50%);
+    color: var(--acero); font-weight: 700;
+  }
+  /* Escritorio: cuatro en fila, flecha hacia la derecha */
+  @media (min-width: 900px) {
+    .pasos { grid-template-columns: repeat(4, 1fr); gap: var(--rejilla-medianil); }
+    .paso:not(:last-child)::after { content: "→"; left: auto; right: -21px; bottom: auto; top: 50%; transform: translateY(-50%); }
+  }
+</style>

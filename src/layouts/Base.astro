@@ -52,12 +52,20 @@ const sitio = Astro.site; // https://www.evolutplatform.com (astro.config.mjs)
     </main>
 
     <footer class="pie">
-      <p>© 2026 Evolut Platform LLC</p>
+      <div>
+        <img src="/logo-sobre-oscuro.svg" alt="Evolut" width="112" height="34" class="pie-logo" />
+        <p>© 2026 Evolut Platform LLC</p>
+      </div>
       <nav aria-label={t.legal}>
+        <p class="pie-titulo">{t.legal}</p>
         <a href={r.aviso}>{t.aviso}</a>
         <a href={r.privacidad}>{t.privacidad}</a>
         <a href={r.cookies}>{t.cookies}</a>
       </nav>
+      <div>
+        <p class="pie-titulo">{t.idioma}</p>
+        <p><a href={rutas.en[pagina]} lang="en">EN</a> | <a href={rutas.es[pagina]} lang="es">ES</a></p>
+      </div>
     </footer>
   </body>
 </html>
@@ -80,14 +88,18 @@ const sitio = Astro.site; // https://www.evolutplatform.com (astro.config.mjs)
   .idiomas a { color: var(--claro); text-decoration: none; }
   .idiomas a[aria-current="page"] { color: var(--blanco); text-decoration: underline; }
 
+  /* Pie como el mockup, sin la columna de contacto (D-146: el único canal visible es LinkedIn) */
   .pie {
-    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;
-    padding: 32px var(--rejilla-margen-movil);
-    background: var(--acero); color: var(--blanco); font-size: 15px;
+    display: grid; gap: 32px;
+    padding: 48px var(--rejilla-margen-movil);
+    background: var(--acero); color: var(--claro); font-size: 15px;
   }
   .pie p { margin: 0; }
-  .pie nav { display: flex; flex-wrap: wrap; gap: 24px; }
+  .pie nav { display: flex; flex-direction: column; gap: 8px; }
   .pie a { color: var(--blanco); }
+  .pie-logo { display: block; height: 30px; width: auto; margin-bottom: 8px; }
+  .pie-titulo { color: var(--blanco); font-weight: 700; margin-bottom: 4px !important; }
+  @media (min-width: 900px) { .pie { grid-template-columns: 2fr 1fr 1fr; } }
 
   /* Escritorio: márgenes de la rejilla de 12 columnas */
   @media (min-width: 900px) {

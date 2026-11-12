@@ -1,0 +1,44 @@
+---
+// Sección 5 · Tu necesidad. D-146: sin formulario; el único canal visible es LinkedIn.
+import { LINKEDIN, type Idioma } from "../i18n";
+import { textos } from "../textos";
+
+interface Props { idioma: Idioma; }
+const t = textos[Astro.props.idioma].necesidad;
+---
+<section class="seccion" id="need">
+  <div class="contenedor rejilla">
+    <div>
+      <p class="etiqueta">{t.etiqueta}</p>
+      <h2>{t.titulo}</h2>
+      <p class="texto">{t.texto}</p>
+      <ul class="lista">
+        {t.lista.map((punto) => <li>{punto}</li>)}
+      </ul>
+    </div>
+    <div class="caja">
+      <a class="boton" href={LINKEDIN} target="_blank" rel="noopener noreferrer">{t.boton}</a>
+      <p class="url">linkedin.com/company/evolut-platform</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .rejilla { display: grid; gap: 40px; align-items: center; }
+  .texto { color: var(--gris); }
+  .lista { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+  /* Marca de verificación: círculo señal con ✓ blanco */
+  .lista li { display: flex; align-items: center; gap: 12px; }
+  .lista li::before {
+    content: "✓"; display: inline-flex; align-items: center; justify-content: center; flex: none;
+    width: 24px; height: 24px; border-radius: 50%; background: var(--senal); color: var(--blanco);
+    font-size: 14px; font-weight: 700;
+  }
+  .caja {
+    display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;
+    background: var(--galvanizado); border-radius: 12px; padding: 48px 24px;
+  }
+  .url { margin: 0; font-family: var(--fuente-datos); font-size: var(--pantalla-datos); color: var(--gris); }
+  @media (min-width: 900px) { .rejilla { grid-template-columns: 1fr 1fr; gap: var(--rejilla-medianil); } }
+  @media (max-width: 480px) { .caja .boton { width: 100%; } }
+</style>

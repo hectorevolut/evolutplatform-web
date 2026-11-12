@@ -1,7 +1,7 @@
 ---
 // Iconos de línea propios (SVG en la página, sin librerías ni ficheros externos).
 // Trazo acero y un acento en señal. Decorativos: aria-hidden, el texto de la tarjeta ya lo dice.
-interface Props { nombre: "excel" | "desviacion" | "sin-datos"; }
+interface Props { nombre: "excel" | "desviacion" | "sin-datos" | "presupuesto" | "control"; }
 const { nombre } = Astro.props;
 ---
 <span class="icono" aria-hidden="true">
@@ -35,12 +35,31 @@ const { nombre } = Astro.props;
         <path d="M17 31l-3 3M31 17l3-3M24 6v4M24 38v4" stroke="#E8622C" />
       </>
     )}
+    {nombre === "presupuesto" && (
+      <>
+        {/* Oferta en PDF: documento con partidas y total */}
+        <path d="M11 4h18l9 9v29a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
+        <path d="M29 4v9h9" />
+        <path d="M15 21h12M15 27h12M15 33h6" />
+        <path d="M25 37h8" stroke="#E8622C" stroke-width="3" />
+      </>
+    )}
+    {nombre === "control" && (
+      <>
+        {/* Control de obra: avance que se ve mientras ocurre */}
+        <rect x="5" y="8" width="38" height="32" rx="2" />
+        <path d="M5 16h38" />
+        <path d="M11 24h18M11 31h11" />
+        <path d="M11 24h10M11 31h6" stroke="#E8622C" stroke-width="3" />
+        <circle cx="36" cy="30" r="4" stroke="#E8622C" />
+      </>
+    )}
   </svg>
 </span>
 
 <style>
   .icono {
-    display: inline-flex; align-items: center; justify-content: center;
+    display: flex;  /* bloque: lo que va detrás empieza en otra línea */ align-items: center; justify-content: center;
     width: 64px; height: 64px; border-radius: 8px; background: var(--galvanizado);
     margin-bottom: 20px;
   }
