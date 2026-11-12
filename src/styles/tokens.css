@@ -5,7 +5,7 @@
   /* Color */
   --acero: #1E3447;
   --senal: #E8622C;
-  --senal-boton: #C24E1E;
+  --senal-boton: #C24E1E;   /* ya no se usa para botones (D-148): botón = senal + tinta */
   --senal-oscuro: #B8461A;
   --pizarra: #3E5162;
   --tinta: #14202B;

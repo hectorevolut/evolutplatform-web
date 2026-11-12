@@ -36,7 +36,7 @@ const t = textos[Astro.props.idioma].necesidad;
   }
   .caja {
     display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;
-    background: var(--galvanizado); border-radius: 12px; padding: 48px 24px;
+    background: var(--blanco); border: 1px solid var(--filete); border-radius: 8px; padding: 48px 24px;  /* D-148, opción A */
   }
   .url { margin: 0; font-family: var(--fuente-datos); font-size: var(--pantalla-datos); color: var(--gris); }
   @media (min-width: 900px) { .rejilla { grid-template-columns: 1fr 1fr; gap: var(--rejilla-medianil); } }

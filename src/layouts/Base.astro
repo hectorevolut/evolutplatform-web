@@ -73,12 +73,13 @@ const sitio = Astro.site; // https://www.evolutplatform.com (astro.config.mjs)
 <style>
   /* Estos estilos solo afectan a este componente (Astro los aísla) */
   .saltar { position: absolute; left: -9999px; }
-  .saltar:focus { left: 16px; top: 8px; background: var(--blanco); padding: 8px; z-index: 10; }
+  .saltar:focus { left: 16px; top: 8px; background: var(--blanco); color: var(--acero); padding: 8px; z-index: 10; }
 
   .cabecera {
     display: flex; align-items: center; justify-content: space-between; gap: 16px;
     padding: 16px var(--rejilla-margen-movil);
     background: var(--acero);              /* cabecera oscura, como el mockup v2.4 */
+    --foco: var(--blanco);
   }
   .logo img { display: block; height: 36px; width: auto; }
   .nav { display: flex; align-items: center; gap: 40px; font-size: var(--pantalla-boton); }
@@ -93,6 +94,7 @@ const sitio = Astro.site; // https://www.evolutplatform.com (astro.config.mjs)
     display: grid; gap: 32px;
     padding: 48px var(--rejilla-margen-movil);
     background: var(--acero); color: var(--claro); font-size: 15px;
+    --foco: var(--blanco);
   }
   .pie p { margin: 0; }
   .pie nav { display: flex; flex-direction: column; gap: 8px; }
