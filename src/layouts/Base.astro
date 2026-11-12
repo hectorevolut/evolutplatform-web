@@ -1,0 +1,123 @@
+---
+// Molde común de todas las páginas: <head>, cabecera, pie e idiomas.
+// Cada página lo usa así: <Base idioma="en" pagina="inicio" titulo="…" descripcion="…"> contenido </Base>
+import "../styles/tokens.css";
+import "../styles/fuentes.css";
+import "../styles/base.css";
+import { rutas, ui, type Idioma, type Pagina } from "../i18n";
+
+interface Props {
+  idioma: Idioma;
+  pagina: Pagina;
+  titulo: string;
+  descripcion: string;
+  error?: boolean;  // página 404: sin canonical ni hreflang, y fuera de los buscadores
+}
+const { idioma, pagina, titulo, descripcion, error = false } = Astro.props;
+const t = ui[idioma];
+const r = rutas[idioma];
+const sitio = Astro.site; // https://www.evolutplatform.com (astro.config.mjs)
+---
+<html lang={idioma}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {error ? (
+      <meta name="robots" content="noindex" />
+    ) : (
+      <>
+        <!-- hreflang: le dice a Google qué página es la misma en el otro idioma -->
+        <link rel="alternate" hreflang="en" href={new URL(rutas.en[pagina], sitio)} />
+        <link rel="alternate" hreflang="es" href={new URL(rutas.es[pagina], sitio)} />
+        <link rel="alternate" hreflang="x-default" href={new URL(rutas.en[pagina], sitio)} />
+        <link rel="canonical" href={new URL(r[pagina], sitio)} />
+      </>
+    )}
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">{t.saltar}</a>
+
+    <header class="cabecera">
+      <a href={r.inicio} class="logo" aria-label="Evolut Platform">
+        <img src="/logo-sobre-oscuro.svg" alt="Evolut" width="148" height="45" />
+      </a>
+      <nav class="nav" aria-label={t.menu}>
+        <a href={`${r.inicio}#products`}>{t.menu}</a>
+        <span class="idiomas">
+          <a href={rutas.en[pagina]} lang="en" aria-current={idioma === "en" ? "page" : undefined}>EN</a>
+          <span aria-hidden="true">|</span>
+          <a href={rutas.es[pagina]} lang="es" aria-current={idioma === "es" ? "page" : undefined}>ES</a>
+        </span>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <slot />  <!-- aquí entra el contenido de cada página -->
+    </main>
+
+    <footer class="pie">
+      <div>
+        <img src="/logo-sobre-oscuro.svg" alt="Evolut" width="112" height="34" class="pie-logo" />
+        <p>© 2026 Evolut Platform LLC</p>
+      </div>
+      <nav aria-label={t.legal}>
+        <p class="pie-titulo">{t.legal}</p>
+        <a href={r.aviso}>{t.aviso}</a>
+        <a href={r.privacidad}>{t.privacidad}</a>
+        <a href={r.cookies}>{t.cookies}</a>
+      </nav>
+      <div>
+        <p class="pie-titulo">{t.idioma}</p>
+        <p><a href={rutas.en[pagina]} lang="en">EN</a> | <a href={rutas.es[pagina]} lang="es">ES</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  /* Estos estilos solo afectan a este componente (Astro los aísla) */
+  .saltar { position: absolute; left: -9999px; }
+  .saltar:focus { left: 16px; top: 8px; background: var(--blanco); color: var(--acero); padding: 8px; z-index: 10; }
+
+  .cabecera {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 16px var(--rejilla-margen-movil);
+    background: var(--acero);              /* cabecera oscura, como el mockup v2.4 */
+    --foco: var(--blanco);
+  }
+  .logo img { display: block; height: 36px; width: auto; }
+  .nav { display: flex; align-items: center; gap: 40px; font-size: var(--pantalla-boton); }
+  .nav a { color: var(--blanco); text-decoration: none; }
+  .nav a:hover { text-decoration: underline; }
+  .idiomas { display: flex; gap: 8px; color: var(--claro); font-family: var(--fuente-datos); font-size: 14px; }
+  .idiomas a { color: var(--claro); text-decoration: none; }
+  .idiomas a[aria-current="page"] { color: var(--blanco); text-decoration: underline; }
+
+  /* Pie como el mockup, sin la columna de contacto (D-146: el único canal visible es LinkedIn) */
+  .pie {
+    display: grid; gap: 32px;
+    padding: 48px var(--rejilla-margen-movil);
+    background: var(--acero); color: var(--claro); font-size: 15px;
+    --foco: var(--blanco);
+  }
+  .pie p { margin: 0; }
+  .pie nav { display: flex; flex-direction: column; gap: 8px; }
+  .pie a { color: var(--blanco); }
+  .pie-logo { display: block; height: 30px; width: auto; margin-bottom: 8px; }
+  .pie-titulo { color: var(--blanco); font-weight: 700; margin-bottom: 4px !important; }
+  @media (min-width: 900px) { .pie { grid-template-columns: 2fr 1fr 1fr; } }
+
+  /* Escritorio: márgenes de la rejilla de 12 columnas */
+  @media (min-width: 900px) {
+    .cabecera, .pie { padding-left: var(--rejilla-margen); padding-right: var(--rejilla-margen); }
+    .logo img { height: 45px; }
+  }
+  /* Móvil estrecho: el menú baja debajo del logo */
+  @media (max-width: 480px) {
+    .cabecera { flex-wrap: wrap; }
+    .nav { gap: 16px; }
+  }
+</style>

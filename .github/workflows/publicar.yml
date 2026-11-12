@@ -1,0 +1,53 @@
+# Publica la web en GitHub Pages cada vez que se sube algo a main (o a mano, desde la pestaña Actions).
+# Requisitos en GitHub (Settings):
+#   · Pages → Build and deployment → Source: «GitHub Actions» (hoy está en «Deploy from a branch»).
+#   · Secrets and variables → Actions → Variables: PUBLIC_ENTITY_ID, PUBLIC_DIRECCION, PUBLIC_FECHA_LEGAL (D-082).
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write      # subir la web a Pages
+  id-token: write   # demostrar a Pages que el envío viene de este repositorio
+
+concurrency:        # si hay dos publicaciones a la vez, gana la última
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  construir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: lts/*
+          cache: npm
+      - run: npm ci                      # instala exactamente lo de package-lock.json
+      - run: npm run build
+        env:
+          ASTRO_TELEMETRY_DISABLED: "1"
+          PUBLIC_ENTITY_ID: ${{ vars.PUBLIC_ENTITY_ID }}
+          PUBLIC_DIRECCION: ${{ vars.PUBLIC_DIRECCION }}
+          PUBLIC_FECHA_LEGAL: ${{ vars.PUBLIC_FECHA_LEGAL }}
+      - name: Comprobar que no queda ningún marcador ni formulario
+        run: |
+          if grep -rl "{{" dist; then echo "Faltan datos: hay marcadores {{…}} en dist/"; exit 1; fi
+          if grep -rl "<form" dist; then echo "Hay un formulario y D-146 no lo permite"; exit 1; fi
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  publicar:
+    needs: construir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - id: despliegue
+        uses: actions/deploy-pages@v5

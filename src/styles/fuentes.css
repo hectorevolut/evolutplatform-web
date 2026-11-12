@@ -1,0 +1,39 @@
+/* Fuentes de la web, servidas desde la propia web (sin Google Fonts ni terceros: D-146).
+   Ficheros en public/fonts/ con su licencia OFL. */
+
+/* Archivo variable: un solo fichero con todos los pesos (wght) y anchuras (wdth) */
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/archivo.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+}
+
+/* IBM Plex Sans: texto corrido (400) y negritas (700) */
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/plex/IBMPlexSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/plex/IBMPlexSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* IBM Plex Mono: etiquetas y datos */
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/plex/IBMPlexMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/plex/IBMPlexMono-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}

@@ -1,0 +1,35 @@
+---
+// Sección 2 · El problema: etiqueta, título y tres tarjetas.
+import Icono from "./Icono.astro";
+import type { Idioma } from "../i18n";
+import { textos } from "../textos";
+
+interface Props { idioma: Idioma; }
+const t = textos[Astro.props.idioma].problema;
+const iconos = ["excel", "desviacion", "sin-datos"] as const; // uno por tarjeta, en orden
+---
+<section class="seccion problema">
+  <div class="contenedor">
+    <p class="etiqueta">{t.etiqueta}</p>
+    <h2>{t.titulo}</h2>
+    <div class="tarjetas">
+      {t.tarjetas.map(([titulo, texto], i) => (
+        <article class="tarjeta">
+          <Icono nombre={iconos[i]} />
+          <h3>{titulo}</h3>
+          <p>{texto}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .problema { background: var(--galvanizado); }
+  .tarjetas { display: grid; gap: var(--rejilla-medianil-movil); margin-top: 32px; }
+  .tarjeta { background: var(--blanco); border: 1px solid var(--filete); border-radius: 8px; padding: 32px; }
+  .tarjeta p { color: var(--gris); margin: 0; }
+  @media (min-width: 900px) {
+    .tarjetas { grid-template-columns: repeat(3, 1fr); gap: var(--rejilla-medianil); }
+  }
+</style>
