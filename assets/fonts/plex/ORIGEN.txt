@@ -1,0 +1,2 @@
+IBM Plex Sans 1.1.0 (@ibm/plex-sans) e IBM Plex Mono 2.5.0 (@ibm/plex-mono), paquetes oficiales de IBM en npm,
+fonts/complete/woff2. Pesos 400 y 700. Licencia: SIL OFL 1.1 (LICENSE.txt). Descargadas el 2026-11-12.
