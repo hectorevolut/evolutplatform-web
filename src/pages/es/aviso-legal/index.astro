@@ -1,0 +1,24 @@
+---
+// Aviso legal. Texto: LEGALES-web.md §2 (master). Datos del titular desde .env (D-082).
+import Legal from "../../../components/Legal.astro";
+import { ENTITY_ID, DIRECCION, CORREO } from "../../../legal";
+---
+<Legal idioma="es" pagina="aviso" titulo="Aviso legal">
+  <h2>Quién está detrás de esta web</h2>
+  <p>Esta web es propiedad de Evolut Platform LLC, que la gestiona: sociedad de responsabilidad limitada registrada en el
+    Estado de Wyoming (Estados Unidos), con entity ID {ENTITY_ID}. Dirección: {DIRECCION}. Correo: {CORREO}.</p>
+  <h2>Para qué sirve esta web</h2>
+  <p>Presenta las herramientas digitales que Evolut Platform LLC está creando para pequeñas empresas de construcción
+    industrializada, e invita al sector a contarnos qué necesita. Las herramientas están en desarrollo: nada de esta web es
+    una oferta ni un contrato, y lo descrito puede cambiar.</p>
+  <h2>Propiedad intelectual</h2>
+  <p>Los textos y el diseño de esta web pertenecen a Evolut Platform LLC, salvo que se indique otra cosa. Puedes enlazar a
+    esta web, pero no copiar su contenido para uso comercial sin nuestro permiso por escrito.</p>
+  <p>Las tipografías Archivo, IBM Plex Sans e IBM Plex Mono se usan con la licencia SIL Open Font License.</p>
+  <h2>Responsabilidad</h2>
+  <p>Procuramos que la información de esta web sea correcta y esté al día, pero no garantizamos que esté completa ni libre
+    de errores. En la medida en que lo permita la ley, no respondemos de las decisiones tomadas a partir de ella.</p>
+  <h2>Ley aplicable</h2>
+  <p>Este aviso legal se rige por las leyes del Estado de Wyoming (Estados Unidos), sin perjuicio de las normas
+    obligatorias de consumo y de protección de datos de tu país de residencia.</p>
+</Legal>

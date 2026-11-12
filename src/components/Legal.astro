@@ -1,0 +1,27 @@
+---
+// Molde de las páginas legales: título, fecha y el texto (slot) con un ancho cómodo de lectura.
+import Base from "../layouts/Base.astro";
+import { fecha } from "../legal";
+import type { Idioma, Pagina } from "../i18n";
+
+interface Props { idioma: Idioma; pagina: Pagina; titulo: string; }
+const { idioma, pagina, titulo } = Astro.props;
+const actualizado = idioma === "en" ? "Last updated" : "Última actualización";
+---
+<Base idioma={idioma} pagina={pagina} titulo={`${titulo} · Evolut Platform`} descripcion={titulo}>
+  <article class="seccion">
+    <div class="contenedor legal">
+      <h1>{titulo}</h1>
+      <p class="fecha">{actualizado}: {fecha(idioma)}</p>
+      <slot />
+    </div>
+  </article>
+</Base>
+
+<style>
+  .legal { max-width: 760px; }
+  .legal h1 { font-size: var(--pantalla-h2); }
+  .fecha { font-family: var(--fuente-datos); font-size: var(--pantalla-datos); color: var(--gris); margin-bottom: 32px; }
+  .legal :global(h2) { font-size: var(--pantalla-h3); margin-top: 32px; }
+  .legal :global(a) { color: var(--senal-oscuro); }
+</style>
