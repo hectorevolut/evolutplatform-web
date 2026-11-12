@@ -1,5 +1,9 @@
 ---
-// Paso 1 de la fase 13: página de prueba. Cada fichero de src/pages/ es una página de la web.
+// Paso 2 de la fase 13: la marca. Los CSS se importan aquí y Astro los mete en la página.
+import "../styles/tokens.css";   // colores, tamaños y rejilla de la marca (T1)
+import "../styles/fuentes.css";  // dónde está cada fuente (@font-face), servidas desde la propia web
+import "../styles/base.css";     // la escala de la T1 aplicada a h1, h2, h3 y al texto
+
 const titulo = "Evolut Platform · Digital tools built on the job site";
 ---
 <html lang="en">
@@ -9,7 +13,15 @@ const titulo = "Evolut Platform · Digital tools built on the job site";
     <title>{titulo}</title>
   </head>
   <body>
-    <h1>{titulo}</h1>
-    <p>Astro funciona. Paso 1 de la fase 13.</p>
+    <main style="padding: 48px 24px; max-width: 960px;">
+      <p class="etiqueta">The problem</p>
+      <h1>Digital tools built on the job site</h1>
+      <h2>Where small off-site builders lose time and money</h2>
+      <h3>Quotes in Excel that take days</h3>
+      <p>
+        Hours copying the manufacturer's report into a spreadsheet. And every change means
+        starting again. <strong>Plex Sans Bold</strong> for emphasis.
+      </p>
+    </main>
   </body>
 </html>

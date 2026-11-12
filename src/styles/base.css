@@ -1,0 +1,22 @@
+/* Estilos base: la escala de la T1 (evolut/brand/tokens.md) aplicada a las etiquetas HTML. */
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  font-size: var(--pantalla-texto);
+  line-height: 1.6;
+  color: var(--tinta);
+  background: var(--blanco);
+}
+
+h1, h2, h3 { font-family: var(--fuente-titular); color: var(--acero); margin: 0 0 0.5em; }
+h1 { font-size: var(--pantalla-h1); font-weight: 800; font-stretch: 118%; line-height: 1.02; }
+h2 { font-size: var(--pantalla-h2); font-weight: 750; font-stretch: 112%; line-height: 1.10; }
+h3 { font-size: var(--pantalla-h3); font-weight: 700; font-stretch: 105%; line-height: 1.20; }
+
+.etiqueta {
+  font-family: var(--fuente-datos);
+  font-size: var(--pantalla-datos);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--senal-oscuro);
+}

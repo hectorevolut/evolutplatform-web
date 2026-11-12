@@ -1,0 +1,46 @@
+/* Tokens de la marca Evolut: valores para la memoria, las ofertas y la web.
+   Explicación y origen de cada valor: evolut/brand/tokens.md (repositorio master).
+   Si cambia un valor, cambia aquí y en tokens.md, y se copia a cada proyecto. */
+:root {
+  /* Color */
+  --acero: #1E3447;
+  --senal: #E8622C;
+  --senal-boton: #C24E1E;
+  --senal-oscuro: #B8461A;
+  --pizarra: #3E5162;
+  --tinta: #14202B;
+  --gris: #5B6875;
+  --galvanizado: #E9EDF0;
+  --filete: #CDD5DC;
+  --claro: #C9D3DC;
+  --hueco: #DCE2E7;
+  --blanco: #FFFFFF;
+
+  /* Tipografía */
+  --fuente-titular: "Archivo", Arial, sans-serif;
+  --fuente-texto: "IBM Plex Sans", Arial, sans-serif;
+  --fuente-datos: "IBM Plex Mono", monospace;
+
+  /* Escala en pantalla (T1) */
+  --pantalla-h1: 56px;
+  --pantalla-h2: 36px;
+  --pantalla-h3: 22px;
+  --pantalla-texto: 17px;
+  --pantalla-boton: 16px;
+  --pantalla-datos: 13px;
+
+  /* Escala en papel (plantilla de Digitech) */
+  --papel-capitulo: 18pt;
+  --papel-apartado: 14pt;
+  --papel-texto: 11pt;
+  --papel-margen: 25.3mm;
+
+  /* Rejilla */
+  --rejilla-margen: 120px;
+  --rejilla-medianil: 24px;
+  --rejilla-seccion: 96px;
+  --rejilla-margen-movil: 16px;
+  --rejilla-medianil-movil: 16px;
+  --rejilla-seccion-movil: 56px;
+  --boton-alto: 52px;
+}
