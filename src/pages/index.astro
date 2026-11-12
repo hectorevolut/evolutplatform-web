@@ -1,27 +1,18 @@
 ---
-// Paso 2 de la fase 13: la marca. Los CSS se importan aquí y Astro los mete en la página.
-import "../styles/tokens.css";   // colores, tamaños y rejilla de la marca (T1)
-import "../styles/fuentes.css";  // dónde está cada fuente (@font-face), servidas desde la propia web
-import "../styles/base.css";     // la escala de la T1 aplicada a h1, h2, h3 y al texto
-
-const titulo = "Evolut Platform · Digital tools built on the job site";
+// Inicio en inglés. El molde (cabecera, pie, idiomas y CSS) está en src/layouts/Base.astro.
+import Base from "../layouts/Base.astro";
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{titulo}</title>
-  </head>
-  <body>
-    <main style="padding: 48px 24px; max-width: 960px;">
-      <p class="etiqueta">The problem</p>
-      <h1>Digital tools built on the job site</h1>
-      <h2>Where small off-site builders lose time and money</h2>
-      <h3>Quotes in Excel that take days</h3>
-      <p>
-        Hours copying the manufacturer's report into a spreadsheet. And every change means
-        starting again. <strong>Plex Sans Bold</strong> for emphasis.
-      </p>
-    </main>
-  </body>
-</html>
+<Base
+  idioma="en"
+  pagina="inicio"
+  titulo="Evolut Platform · Digital tools built on the job site"
+  descripcion="Digital tools built on the job site, for small industrialized construction companies."
+>
+  <section style="padding: 48px 16px; max-width: 960px;">
+    <p class="etiqueta">The problem</p>
+    <h1>Digital tools built on the job site</h1>
+    <h2>Where small off-site builders lose time and money</h2>
+    <h3>Quotes in Excel that take days</h3>
+    <p>Hours copying the manufacturer's report into a spreadsheet. And every change means starting again.</p>
+  </section>
+</Base>
