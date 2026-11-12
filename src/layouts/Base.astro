@@ -11,8 +11,9 @@ interface Props {
   pagina: Pagina;
   titulo: string;
   descripcion: string;
+  error?: boolean;  // página 404: sin canonical ni hreflang, y fuera de los buscadores
 }
-const { idioma, pagina, titulo, descripcion } = Astro.props;
+const { idioma, pagina, titulo, descripcion, error = false } = Astro.props;
 const t = ui[idioma];
 const r = rutas[idioma];
 const sitio = Astro.site; // https://www.evolutplatform.com (astro.config.mjs)
@@ -24,11 +25,17 @@ const sitio = Astro.site; // https://www.evolutplatform.com (astro.config.mjs)
     <title>{titulo}</title>
     <meta name="description" content={descripcion} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <!-- hreflang: le dice a Google qué página es la misma en el otro idioma -->
-    <link rel="alternate" hreflang="en" href={new URL(rutas.en[pagina], sitio)} />
-    <link rel="alternate" hreflang="es" href={new URL(rutas.es[pagina], sitio)} />
-    <link rel="alternate" hreflang="x-default" href={new URL(rutas.en[pagina], sitio)} />
-    <link rel="canonical" href={new URL(r[pagina], sitio)} />
+    {error ? (
+      <meta name="robots" content="noindex" />
+    ) : (
+      <>
+        <!-- hreflang: le dice a Google qué página es la misma en el otro idioma -->
+        <link rel="alternate" hreflang="en" href={new URL(rutas.en[pagina], sitio)} />
+        <link rel="alternate" hreflang="es" href={new URL(rutas.es[pagina], sitio)} />
+        <link rel="alternate" hreflang="x-default" href={new URL(rutas.en[pagina], sitio)} />
+        <link rel="canonical" href={new URL(r[pagina], sitio)} />
+      </>
+    )}
   </head>
   <body>
     <a class="saltar" href="#contenido">{t.saltar}</a>

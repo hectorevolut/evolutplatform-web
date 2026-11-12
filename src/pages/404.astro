@@ -1,0 +1,27 @@
+---
+// Página de error. GitHub Pages sirve un solo 404.html para cualquier ruta, así que va en los dos idiomas.
+import Base from "../layouts/Base.astro";
+---
+<Base idioma="en" pagina="inicio" titulo="Page not found · Evolut Platform" descripcion="Page not found" error>
+  <section class="seccion">
+    <div class="contenedor error">
+      <span class="filete" aria-hidden="true"></span>
+      <p class="etiqueta">404</p>
+      <h1>Page not found</h1>
+      <p>The page you are looking for does not exist or has moved.</p>
+      <p><a class="boton" href="/">Go to the home page</a></p>
+      <hr />
+      <div lang="es">
+        <h2>Página no encontrada</h2>
+        <p>La página que buscas no existe o ha cambiado de dirección.</p>
+        <p><a class="enlace" href="/es/">Ir al inicio en español →</a></p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .error { max-width: 760px; }
+  .filete { display: block; width: 56px; height: 4px; background: var(--senal); margin-bottom: 20px; }
+  hr { border: 0; border-top: 1px solid var(--filete); margin: 48px 0 32px; }
+</style>
