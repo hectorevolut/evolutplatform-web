@@ -1,18 +1,11 @@
 ---
-// Inicio en inglés. El molde (cabecera, pie, idiomas y CSS) está en src/layouts/Base.astro.
+// Inicio (en). Cada sección es un componente de src/components/; los textos, de src/textos.ts.
 import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Problema from "../components/Problema.astro";
 ---
-<Base
-  idioma="en"
-  pagina="inicio"
-  titulo="Evolut Platform · Digital tools built on the job site"
-  descripcion="Digital tools built on the job site, for small industrialized construction companies."
->
-  <section style="padding: 48px 16px; max-width: 960px;">
-    <p class="etiqueta">The problem</p>
-    <h1>Digital tools built on the job site</h1>
-    <h2>Where small off-site builders lose time and money</h2>
-    <h3>Quotes in Excel that take days</h3>
-    <p>Hours copying the manufacturer's report into a spreadsheet. And every change means starting again.</p>
-  </section>
+<Base idioma="en" pagina="inicio" titulo="Evolut Platform · Digital tools built on the job site" descripcion="Digital tools built on the job site, for small industrialized construction companies.">
+  <Hero idioma="en" />
+  <Problema idioma="en" />
+  <!-- Paso 4b: Solución, Productos (#products) y Tu necesidad -->
 </Base>

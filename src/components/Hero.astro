@@ -1,0 +1,44 @@
+---
+// Sección 1 · Hero: titular, subtítulo, párrafo, CTA a LinkedIn (D-146) y el bucle.
+import Bucle from "./Bucle.astro";
+import { LINKEDIN, type Idioma } from "../i18n";
+import { textos } from "../textos";
+
+interface Props { idioma: Idioma; }
+const t = textos[Astro.props.idioma];
+---
+<section class="seccion hero">
+  <div class="contenedor rejilla">
+    <div class="texto">
+      <h1>{t.hero.titulo}</h1>
+      <p class="sub">{t.hero.sub}</p>
+      <p class="parrafo">{t.hero.texto}</p>
+      <div class="acciones">
+        <!-- rel: LinkedIn se abre en otra pestaña y no recibe acceso a esta página -->
+        <a class="boton" href={LINKEDIN} target="_blank" rel="noopener noreferrer">{t.hero.cta}</a>
+        <a class="enlace" href="#products">{t.hero.enlace}</a>
+      </div>
+    </div>
+    <div class="caja-bucle">
+      <Bucle pasos={t.bucle.pasos} centro={t.bucle.centro} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .rejilla { display: grid; gap: 40px; align-items: center; }
+  .sub { font-size: 22px; line-height: 1.4; color: var(--tinta); margin: 0 0 12px; }
+  .parrafo { color: var(--gris); margin: 0 0 32px; max-width: 34em; }
+  .acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 24px 48px; }
+  .caja-bucle { background: var(--galvanizado); border-radius: 12px; padding: 24px; }
+  /* Escritorio: texto 7 columnas, bucle 5 */
+  @media (min-width: 900px) {
+    .rejilla { grid-template-columns: 7fr 5fr; gap: var(--rejilla-medianil); }
+    .texto { padding-right: 48px; }
+  }
+  /* Móvil: titular algo menor para que no parta palabras */
+  @media (max-width: 480px) {
+    h1 { font-size: 40px; }
+    .boton { width: 100%; }
+  }
+</style>

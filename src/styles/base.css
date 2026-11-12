@@ -18,5 +18,25 @@ h3 { font-size: var(--pantalla-h3); font-weight: 700; font-stretch: 105%; line-h
   font-size: var(--pantalla-datos);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-weight: 700;
   color: var(--senal-oscuro);
 }
+
+/* ── Piezas comunes de la landing ─────────────────────────────── */
+.contenedor { max-width: 1200px; margin: 0 auto; padding: 0 var(--rejilla-margen-movil); }
+.seccion { padding: var(--rejilla-seccion-movil) 0; }
+@media (min-width: 900px) { .seccion { padding: var(--rejilla-seccion) 0; } }
+
+/* Botón principal: señal botón (#C24E1E), contraste AA con texto blanco */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--boton-alto); padding: 0 32px; border-radius: 4px;
+  background: var(--senal-boton); color: var(--blanco);
+  font-weight: 700; font-size: var(--pantalla-boton); text-decoration: none;
+}
+.boton:hover { background: var(--senal-oscuro); }
+.enlace { color: var(--acero); font-weight: 700; font-size: var(--pantalla-boton); }
+a:focus-visible { outline: 3px solid var(--senal); outline-offset: 3px; }
+
+/* Móvil: H2 algo menor (los títulos largos en ES ocupaban 6 líneas) */
+@media (max-width: 480px) { h2 { font-size: 28px; } }

@@ -35,7 +35,7 @@ const sitio = Astro.site; // https://www.evolutplatform.com (astro.config.mjs)
 
     <header class="cabecera">
       <a href={r.inicio} class="logo" aria-label="Evolut Platform">
-        <img src="/logo.svg" alt="Evolut" width="148" height="45" />
+        <img src="/logo-sobre-oscuro.svg" alt="Evolut" width="148" height="45" />
       </a>
       <nav class="nav" aria-label={t.menu}>
         <a href={`${r.inicio}#products`}>{t.menu}</a>
@@ -70,15 +70,15 @@ const sitio = Astro.site; // https://www.evolutplatform.com (astro.config.mjs)
   .cabecera {
     display: flex; align-items: center; justify-content: space-between; gap: 16px;
     padding: 16px var(--rejilla-margen-movil);
-    border-bottom: 1px solid var(--filete);
+    background: var(--acero);              /* cabecera oscura, como el mockup v2.4 */
   }
   .logo img { display: block; height: 36px; width: auto; }
-  .nav { display: flex; align-items: center; gap: 24px; font-weight: 700; font-size: var(--pantalla-boton); }
-  .nav a { color: var(--acero); text-decoration: none; }
+  .nav { display: flex; align-items: center; gap: 40px; font-size: var(--pantalla-boton); }
+  .nav a { color: var(--blanco); text-decoration: none; }
   .nav a:hover { text-decoration: underline; }
-  .idiomas { display: flex; gap: 6px; color: var(--gris); font-family: var(--fuente-datos); font-size: var(--pantalla-datos); }
-  .idiomas a { color: var(--gris); }
-  .idiomas a[aria-current="page"] { color: var(--acero); }
+  .idiomas { display: flex; gap: 8px; color: var(--claro); font-family: var(--fuente-datos); font-size: 14px; }
+  .idiomas a { color: var(--claro); text-decoration: none; }
+  .idiomas a[aria-current="page"] { color: var(--blanco); text-decoration: underline; }
 
   .pie {
     display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;
