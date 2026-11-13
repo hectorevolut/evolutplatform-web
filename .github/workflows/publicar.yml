@@ -36,8 +36,9 @@ jobs:
           PUBLIC_FECHA_LEGAL: ${{ vars.PUBLIC_FECHA_LEGAL }}
       - name: Comprobar que no queda ningún marcador ni formulario
         run: |
-          if grep -rl "{{" dist; then echo "Faltan datos: hay marcadores {{…}} en dist/"; exit 1; fi
-          if grep -rl "<form" dist; then echo "Hay un formulario y D-146 no lo permite"; exit 1; fi
+          # -I: salta los binarios (las .woff2 contienen «{{» por casualidad; falló así el 12/11)
+          if grep -rlI "{{" dist; then echo "Faltan datos: hay marcadores {{…}} en dist/"; exit 1; fi
+          if grep -rlI "<form" dist; then echo "Hay un formulario y D-146 no lo permite"; exit 1; fi
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
